@@ -1,3 +1,5 @@
-# Build folder and log file
-build/
+build
 build.log
+tmp
+._*
+.DS_Store
