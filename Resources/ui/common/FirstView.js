@@ -9,6 +9,7 @@ function FirstView() {
 	var SpriteConfig = require('/sprite/SpriteConfig');
 	
 	//Sample implementation 1
+	/*
 	var sprite = new SpriteCore(SpriteConfig.Pony);
 	self.add(sprite.createSprite({
 		spriteStartFrame:270
@@ -19,12 +20,14 @@ function FirstView() {
   		animationArray:[270,271,272,273,274,275,276,277,278],
   		time:2500
   	});
+  	*/
   	
   	//Sample implementation 2
-  	var config = SpriteConfig.Pony;
-  	config.spriteScale=1.5;
+  	var config = JSON.parse(JSON.stringify(SpriteConfig.Pony));//deep copy obj
+  	//config.spriteScale=1.5;
+  	config.reverseLoop=true;
+  	config.loops=2;
   	var sprite2 = new SpriteCore(config);
-  	config.spriteScale=1;
 	self.add(sprite2.createSprite({
 		spriteStartFrame:270,
 	}));
@@ -37,6 +40,7 @@ function FirstView() {
   	});
   	
   	//Sample implementation 3
+  	/*
   	var sprite3 = new SpriteCore(SpriteConfig.Pony);
 	self.add(sprite3.createSprite({
 		spriteStartCustomFrame:{x:0,y:864,h:96,w:96},
@@ -58,9 +62,11 @@ function FirstView() {
   		animationCustomArray:arr,
   		time:2500
   	});
-  	
+  	*/
   	//Sample implementation 4
-	var sprite4 = new SpriteCore(SpriteConfig.Mega);
+  	var config = JSON.parse(JSON.stringify(SpriteConfig.Mega));//deep copy obj
+  	config.loopType='bounce';
+	var sprite4 = new SpriteCore(config);
 	self.add(sprite4.createSprite({
 		spriteStartCustomFrame:{x:0,y:225,h:48,w:80},
 	}));
@@ -80,7 +86,7 @@ function FirstView() {
   		animationCustomArray:arr,
   		time:2500
   	}); 	
-
+	
       
 	return self;
 }
