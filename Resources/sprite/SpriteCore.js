@@ -137,16 +137,14 @@ SpriteCore.prototype.setFrame =function(frame)
 	
 	this.sheet.left = -1*(this.spriteCurrentFrame%this.columns).toFixed()*this.spriteWidth;
 	this.sheet.top = -1*(this.spriteCurrentFrame/this.columns).toFixed()*this.spriteHeight;
-	//Ti.API.info('x:'+this.sheet.left+' y:'+this.sheet.top);
 	return this;
 };
 SpriteCore.prototype.setCustomFrame =function(frameParam)
 {
-	//Ti.API.info(JSON.stringify(frameParam));
-	this.sheet.left = -1*(frameParam.x);
-	this.sheet.top = -1*(frameParam.y);
-	if(frameParam.w)this.spriteView.width = frameParam.w;
-	if(frameParam.h)this.spriteView.height = frameParam.h;
+	this.sheet.left = -1*(frameParam.x*this.spriteScale);
+	this.sheet.top = -1*(frameParam.y*this.spriteScale);
+	if(frameParam.w)this.spriteView.width = frameParam.w*this.spriteScale;
+	if(frameParam.h)this.spriteView.height = frameParam.h*this.spriteScale;
 	return this;
 };
 

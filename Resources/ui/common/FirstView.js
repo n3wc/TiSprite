@@ -9,7 +9,7 @@ function FirstView() {
 	var SpriteConfig = require('/sprite/SpriteConfig');
 	
 	//Sample implementation 1
-	/*
+	
 	var sprite = new SpriteCore(SpriteConfig.Pony);
 	self.add(sprite.createSprite({
 		spriteStartFrame:270
@@ -20,13 +20,13 @@ function FirstView() {
   		animationArray:[270,271,272,273,274,275,276,277,278],
   		time:2500
   	});
-  	*/
+  	
   	
   	//Sample implementation 2
-  	var config = JSON.parse(JSON.stringify(SpriteConfig.Pony));//deep copy obj
+  	var config = JSON.parse(JSON.stringify(SpriteConfig.Pony));//deep copy obj to prevent changes from interfering with any other references to the object later in code
   	//config.spriteScale=1.5;
   	config.reverseLoop=true;
-  	config.loops=2;
+  	config.loops=4;
   	var sprite2 = new SpriteCore(config);
 	self.add(sprite2.createSprite({
 		spriteStartFrame:270,
@@ -40,7 +40,7 @@ function FirstView() {
   	});
   	
   	//Sample implementation 3
-  	/*
+  	
   	var sprite3 = new SpriteCore(SpriteConfig.Pony);
 	self.add(sprite3.createSprite({
 		spriteStartCustomFrame:{x:0,y:864,h:96,w:96},
@@ -60,18 +60,19 @@ function FirstView() {
         ]; 
   	sprite3.start({
   		animationCustomArray:arr,
-  		time:2500
+  		time:500
   	});
-  	*/
+  	
   	//Sample implementation 4
-  	var config = JSON.parse(JSON.stringify(SpriteConfig.Mega));//deep copy obj
+  	var config = JSON.parse(JSON.stringify(SpriteConfig.Mega));//deep copy obj to prevent changes from interfering with any other references to the object later in code
   	config.loopType='bounce';
+  	config.spriteScale=2.5;
 	var sprite4 = new SpriteCore(config);
 	self.add(sprite4.createSprite({
 		spriteStartCustomFrame:{x:0,y:225,h:48,w:80},
 	}));
   	sprite4.spriteView.top=200;
-  	var arr=[
+  	var arr=[//sprite scaling handled in the functions for you, use 1:1 locations
            {x:0,y:416,h:76,w:58},
            {x:58,y:416,h:76,w:66},
            {x:124,y:416,h:76,w:112},
@@ -84,7 +85,7 @@ function FirstView() {
         ]; 
   	sprite4.start({
   		animationCustomArray:arr,
-  		time:2500
+  		time:500
   	}); 	
 	
       
