@@ -1,6 +1,6 @@
 TiSprite
 ========
-I needed a way to create simple sprite animations across both android & ios; this was my solution.
+I needed a way to create simple sprite animations across both android & ios for Appcelerator Titanium; this was my solution.
 
 It loads the sprite sheet image in an image view then uses a second view to mask off the viewable area.
 The module handles
