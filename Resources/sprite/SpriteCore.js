@@ -59,7 +59,7 @@ SpriteCore.prototype.createSprite = function(constructor) {
 
 SpriteCore.prototype.start = function(args) {
 	var self = this;
-	if(args.start)
+	if ('undefined' !== typeof args.start) 
 	{
 		this.startAnimationFrame=args.start;
 		this.endAnimationFrame=args.end;
@@ -99,14 +99,18 @@ SpriteCore.prototype.check_time =function(thisRef)
 	if(self.spriteAnimationPosition++ == self.animateFrames)
 	{
 		if(self.loops!==-1 && --self.loops === 0)
+		{
 			self.stop();
+			this.spriteView.fireEvent('animationComplete');
+			return self;
+		}
 		if(self.loopType=='bounce') self.reverseLoop=!self.reverseLoop;
 		
 		self.spriteAnimationPosition=0;
 		
 		if(self.animationCustomArray)
 			self.setCustomFrame(self.animationCustomArray[self.reverseLoop?self.animateFrames:0]);
-		else if(self.startAnimationFrame)
+		else if ('undefined' !== typeof self.startAnimationFrame) 
 			self.setFrame(self.reverseLoop?self.endAnimationFrame:self.startAnimationFrame);
 		else
 			self.setFrame(self.animationArray[self.reverseLoop?self.animateFrames:0]);	
@@ -122,7 +126,7 @@ SpriteCore.prototype.check_time =function(thisRef)
 			
 		if(self.animationCustomArray)
 			self.setCustomFrame(self.animationCustomArray[nextFrame]);
-		else if(self.startAnimationFrame)
+		else if ('undefined' !== typeof self.startAnimationFrame) 
 			self.setFrame(nextFrame)
 		else
 			self.setFrame(self.animationArray[nextFrame]);
@@ -133,18 +137,18 @@ SpriteCore.prototype.check_time =function(thisRef)
 
 SpriteCore.prototype.setFrame =function(frame)
 {
-	if(frame) this.spriteCurrentFrame=frame;
-	
-	this.sheet.left = -1*(this.spriteCurrentFrame%this.columns).toFixed()*this.spriteWidth;
-	this.sheet.top = -1*(this.spriteCurrentFrame/this.columns).toFixed()*this.spriteHeight;
+	if ('undefined' !== typeof frame) this.spriteCurrentFrame=frame;
+	this.sheet.left = -1*parseInt(this.spriteCurrentFrame%this.columns)*this.spriteWidth;
+	this.sheet.top = -1*parseInt(this.spriteCurrentFrame/this.columns)*this.spriteHeight;
+	//Ti.API.info(frame+' - x:'+this.sheet.left+' y:'+this.sheet.top);
 	return this;
 };
 SpriteCore.prototype.setCustomFrame =function(frameParam)
 {
-	this.sheet.left = -1*(frameParam.x*this.spriteScale);
-	this.sheet.top = -1*(frameParam.y*this.spriteScale);
-	if(frameParam.w)this.spriteView.width = frameParam.w*this.spriteScale;
-	if(frameParam.h)this.spriteView.height = frameParam.h*this.spriteScale;
+	this.sheet.left = -1*parseInt(frameParam.x*this.spriteScale);
+	this.sheet.top = -1*parseInt(frameParam.y*this.spriteScale);
+	if(frameParam.w)this.spriteView.width = parseInt(frameParam.w*this.spriteScale);
+	if(frameParam.h)this.spriteView.height = parseInt(frameParam.h*this.spriteScale);
 	return this;
 };
 
@@ -154,6 +158,7 @@ SpriteCore.prototype.stop = function() {
 };
 
 SpriteCore.prototype.resume = function() {
+	var self = this;
 	this.spriteTimer = setInterval(function(){self.check_time(self)}, (this.animationDuration/this.animateFrames).toFixed());
 	return this;
 };
