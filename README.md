@@ -7,9 +7,9 @@ The module handles
 
 -scaling
 
--limiting # of loops
+-infinate or limited # of loops
 
--reverse play of loops
+-reverse play of loop(s)
 
 -'bounce' loops (play forward then play reversed)
 
@@ -21,19 +21,29 @@ working examples are in ui/common/firstview.js slot machine sample
 
     //common js file to handle animations
     var SpriteCore = require('/sprite/SpriteCore');
-    //while not needed a nice place to keep all your configurations for a sheet
+    //while not needed a nice place to keep all your configurations for your sheets
     var SpriteConfig = require('/sprite/SpriteConfig');
     
     var self = Ti.UI.createScrollView({backgroundColor: '#666'});
     
     var sprite = new SpriteCore(SpriteConfig.Slots);//see SpriteConfig.Slots for all definable options
+        //spriteScale: 1,//defaults to 1 if not included
+        //spriteWidth: 86,//used to create 'masked area' & defined sprite blocks
+        //spriteHeight : 72,//used to create 'masked area' & defined sprite blocks
+        //spritesheetWidth : 86,
+        //spritesheetHeight : 432,
+        //spritesheetImage : '/Images/reel.png',
+        //loopType : 'loop',//loop or bounce. defaults to 'loop' if not included
+        //loops : -1,//defaults to -1 (infinite) if not included
+        //reverseLoop : false,//defaults to 'false' if not included
     
-    //creates a view so you're free to do things like: sprite.spriteView.top=100; to set the location.
+    //this creates a view so you're free to do things like: sprite.spriteView.top=100; to set the location or anything else you want/can do to views
 
     self.add(sprite.createSprite({
     	spriteStartFrame:0
-    }));
+    }));//makes sprite visable at start frame
 
+    //start animation options
     sprite.start({
       animationArray:[0,1,2,3,4,5],
       time:2500
