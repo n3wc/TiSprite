@@ -76,9 +76,12 @@ function FirstView() {
 		    sprite.stop();
 		    sprite2.stop();
 		    sprite3.stop();
-		    spinButton.setEnabled(true);
+		    
 		    if(sprite.spriteCurrentFrame === sprite2.spriteCurrentFrame && sprite.spriteCurrentFrame === sprite3.spriteCurrentFrame)
 		    	lblWinner.text='WINNER!';
+		    else if(sprite.spriteCurrentFrame === 5 || sprite2.spriteCurrentFrame === 5 || sprite3.spriteCurrentFrame==5)
+		    	lblWinner.text='well you got a cherry, \nguess that is something';
+		    spinButton.setEnabled(true);
 		}, spinFor);
 	});
 	var lblWinner = Ti.UI.createLabel({
