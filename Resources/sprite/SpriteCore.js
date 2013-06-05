@@ -1,4 +1,8 @@
+//feel free to reach out/offer suggestions (or buy me a beer): jesse.newcomer@gmail.com
+//code source:https://github.com/n3wc/TiSprite
+//if you end up using it shoot me a note i'd like to see it!
 //todo z index
+//todo cache imageviews at a higher level for reusabilty and lesson memory footprint & clean up method  
 function SpriteCore(constructor) {
 	if(constructor && constructor.spriteScale) this.spriteScale=constructor.spriteScale; else this.spriteScale=1;
 	//loop or bounce
@@ -89,6 +93,7 @@ SpriteCore.prototype.start = function(args) {
 	}
 	this.animationDuration=args.time;
     this.spriteTimer = setInterval(function(){self.check_time(self)}, (this.animationDuration/this.animateFrames).toFixed());
+    this.spriteView.fireEvent('animationStarted');
 	return this;
 };
 
@@ -154,12 +159,14 @@ SpriteCore.prototype.setCustomFrame =function(frameParam)
 
 SpriteCore.prototype.stop = function() {
 	clearInterval(this.spriteTimer);
+	this.spriteView.fireEvent('animationStopped');
 	return this;
 };
 
 SpriteCore.prototype.resume = function() {
 	var self = this;
 	this.spriteTimer = setInterval(function(){self.check_time(self)}, (this.animationDuration/this.animateFrames).toFixed());
+	this.spriteView.fireEvent('animationResumed');
 	return this;
 };
 

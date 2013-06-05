@@ -1,13 +1,16 @@
 TiSprite
 ========
 I needed a way to create simple sprite animations across both android & ios for Appcelerator Titanium; this was my solution.
+feel free to reach out/offer suggestions (or buy me a beer): jesse.newcomer@gmail.com
+if you end up using it shoot me a note i'd like to see it!
+still needs zindex support although it can be done on the returned view and it needs imageview caching at a higher level toreduce the memory footprint when reusing the same sheets
 
 It loads the sprite sheet image in an image view then uses a second view to mask off the viewable area.
 The module handles
 
 -scaling
 
--infinate or limited # of loops
+-infinite or limited # of loops
 
 -reverse play of loop(s)
 
