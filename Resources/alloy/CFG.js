@@ -1,0 +1,1 @@
+module.exports={"dependencies":{"com.n3wc.tisprite":"1.0"}};

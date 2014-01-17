@@ -1,0 +1,6 @@
+<Alloy>
+	<Window class="container">
+		<View id="win" layout="absolute" width="Ti.UI.FILL" height="Ti.UI.FILL">
+		</View>
+	</Window>
+</Alloy>

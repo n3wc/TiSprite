@@ -1,9 +1,8 @@
-#appname: TiSprite
-#appid: com.jessenewcomer.TiSprite
-#type: mobile
-#guid: 8f4a418a-49f2-4287-ad46-7ea677e09e92
-#version: 1.0
-#publisher: not specified
-#url: not specified
-#image: appicon.png
-#desc: not specified
+#appname:TiSpriteAlloy
+#publisher:jesse.newcomer
+#url:http://www.n3wc.com
+#image:appicon.png
+#appid:com.n3wc.tisprite
+#desc:not specified
+#type:ipad
+#guid:71952741-9a45-49c1-9bab-34e2a3d350cf
