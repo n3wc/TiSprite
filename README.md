@@ -1,7 +1,12 @@
 TiSprite
 ========
+UPDATE: 1/17/14
+converted project to be an alloy widget - work in progress for the next few days. Check out controllers/index.js for samples. the documentation below needs updated!!
+
+
+
+
 I needed a way to create simple sprite animations across both android & ios for Appcelerator Titanium; this was my solution.
-feel free to reach out/offer suggestions (or buy me a beer): jesse.newcomer@gmail.com
 
 if you end up using it shoot me a note i'd like to see it!
 
