@@ -23,7 +23,14 @@ if you end up using it shoot me a note i'd like to see it!
 working examples are in ontrollers/index.js
 
 youtube sample:
+
 [![ScreenShot](http://i.imgur.com/t3Tu1oll.png)](http://www.youtube.com/watch?v=P2F-RJfHNgc)
+
+
+sheets used
+
+![ScreenShot](http://i.imgur.com/Fncrvahl.png)
+![ScreenShot](http://i.imgur.com/T83XG2cl.gif)
 
 some sample code
 ```
