@@ -28,6 +28,7 @@ function SpriteCore(constructor) {
 		width:this.spriteWidth,
 		height:this.spriteHeight,
 	});
+	OS_IOS && (this.spriteView.clipMode = Ti.UI.iOS.CLIP_MODE_ENABLED);
 	this.spriteView.add(this.sheet);
 	
 	
